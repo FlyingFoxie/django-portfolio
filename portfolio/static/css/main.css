@@ -1,0 +1,61 @@
+.blog-header{
+	line-height: 1;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #272829;
+}
+
+.profile-pic {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+    background-color: #ffffff;
+    vertical-align: middle;
+    text-align: center;
+    color: transparent;
+    transition: all .3s ease;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#intro{
+    border:1px solid #cecece;
+    background-color: #ffffff;
+    padding-top:2rem;
+    padding-bottom: 2rem;
+}
+
+#skills{
+    border:1px solid #cecece;
+    background-color: #ffffff;
+    padding-top:2rem;
+    padding-bottom: 2rem;
+}
+
+.list-group-item{
+    border:none;
+}
+
+.progress-bar{
+    background-color:#0563bb;
+}
+
+.card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.card-columns{
+    margin-bottom: 1.25rem;
+}
+
+#experience-calendar{
+    color: #b3b3b3;
+}

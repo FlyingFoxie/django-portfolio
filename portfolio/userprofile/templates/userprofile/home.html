@@ -1,0 +1,101 @@
+{% extends 'userprofile/main.html' %}
+
+{% block content %}
+	<div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+	  <div class="row">
+	    <div class="col-md-3">
+	      <img class="profile-pic" src="{{profile.profile_pic.url}}" >
+	    </div>
+	    <div class="col-md-auto">
+	      <h1 class="display-4 font-italic">{{profile.name}}</h1>
+	      <p class="lead my-3">{{profile.headline}}</p>
+	    </div>
+	  </div>
+	</div>
+
+
+	<div class="jumbotron" id="intro">
+	  <h2>ABOUT</h2>
+		  <div class="container">
+		    <div class="row">
+		      <div class="col-lg-6">
+		        <ul class="list-group list-group-flush">
+		          <li class="list-group-item"><strong>Birthday:</strong> {{profile.birthday}}</li>
+		          <li class="list-group-item"><strong>Website:</strong> www.example.com</li>
+		          <li class="list-group-item"><strong>Phone:</strong> {{profile.phone}}</li>
+			          <li class="list-group-item"><strong>City:</strong> {{profile.address}}</li>
+		        </ul>
+		      </div>
+		      <div class="col-lg-6">
+		        <ul class="list-group list-group-flush">
+		          <li class="list-group-item"><strong>Age:</strong> {{profile.calculate_age}}</li>
+		          <li class="list-group-item"><strong>Degree:</strong> www.example.com</li>
+		          <li class="list-group-item"><strong>Email:</strong> {{profile.email}}</li>
+		          <li class="list-group-item"> <strong>Freelance:</strong> City : New York, USA</li>
+		        </ul>
+		      </div>
+		    </div>
+		  </div>
+	</div>
+
+
+	<div class="card-columns" id="education">
+	  {% for e in educations %}
+	  <div class="card text-white bg-success mb-3">
+	      <div class="card-body">
+	      <h5 class="card-title">{{e.institute}}</h5>
+	      <h6>{{e.start_date}} to {{e.end_date}}</h6>
+	        <p class="card-text">
+	          Degree in Electrical and Electronic Engineering
+	        </p>
+	      </div>
+	  </div>
+	  {% endfor %}
+	</div>
+
+    <div class="jumbotron" id="intro">
+      <h2>SKILL</h2>
+      <div class="container">
+        <div class="row">
+       {% for s in skills %}
+          <div class="col-lg-6">
+            <ul class="list-group">
+              <li class="list-group-item"><strong>{{s.skills}}</strong>
+              	<h6>{{s.skills_description|safe}}</h6>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" style="width: {{s.skills_level}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{s.skills_level}}%</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    {% for exp in experiences %}
+    <div class="card mb-3" id='experience'>
+      <div class="row no-gutters">
+        <div class="col-md-3">
+          <iframe
+		    width=100%
+		    height=100%
+		    frameborder="0" style="border:0"
+		    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD-ofgL7r1wrno_btzKUlUn5qPcPa4vE8o
+		      &q={{exp.company_name}},{{exp.company_address}}" allowfullscreen>
+		  </iframe>
+        </div>
+        <div class="col-md-9">
+          <div class="card-body">
+            <h4 class="card-title">{{exp.company_name}}</h4>
+            <h5>{{exp.job_title}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{exp.start_date}} to {{exp.end_date}}</h6>
+            <p class="card-text">{{exp.job_description}}.</p>
+            <p class="card-text"><small class="text-muted">{{exp.duration}}</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+{% endblock content %}
