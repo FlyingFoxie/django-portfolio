@@ -4,7 +4,7 @@
 
 	  	{% if request.user.is_authenticated and request.get_full_path == "/settings/" %}
 	    <a class="btn btn-sm btn-success" href="{% url 'preview' profile.name %}">Profile</a>
-	    {% elif request.user.is_authenticated %}
+	    {% elif request.user.is_authenticated and request.user.profile.name == profile.name %}
 	    <a class="btn btn-sm btn-success" href="{% url 'profile' %}">Edit</a>
 	    {% endif %}
 	  </div>

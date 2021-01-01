@@ -8,7 +8,7 @@
     </div>
 {% endfor %}
     
-    <form id="form-container" method="POST">
+    <form id="form-container" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <h4>About Me</h4>
     <hr class="solid">
