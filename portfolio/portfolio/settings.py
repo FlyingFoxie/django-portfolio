@@ -26,7 +26,7 @@ SECRET_KEY = '+e=yq=mv8tiq+ngkk&2aia^nrfra3@bn&povsua8te#5a200v6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://flyingfox.pythonanywhere.com/','localhost']
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'userprofile.apps.UserprofileConfig',
     'ckeditor',
     'ckeditor_uploader',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -147,5 +148,5 @@ CKEDITOR_CONFIGS = {
     ]),
     }
 }
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 CKEDITOR_UPLOAD_PATH = "uploads/"

@@ -18,7 +18,11 @@ class Profile(models.Model):
 
 	@property
 	def calculate_age(self):
-		return int((datetime.now().date() - self.birthday).days / 365.25)
+		try:
+			age = int((datetime.now().date() - self.birthday).days / 365.25)
+		except:
+			age = "*Please Enter birthday Date*"
+		return age
 
 	def __str__(self):
 		return self.name

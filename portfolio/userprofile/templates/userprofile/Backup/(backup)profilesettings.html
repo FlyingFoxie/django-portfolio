@@ -1,0 +1,119 @@
+{% extends 'userprofile/main.html' %}
+
+{% block edit_content %}
+<!--
+<h3>Hello World</h3>
+<form method="POST" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        {{profile_form.as_p}}
+    </table>
+
+    {{formset.management_form}}
+    {% for form in formset %}
+    <div id="bird-form">
+    {{form.as_p}}
+    </div>
+    {% endfor %}
+    <button id="add-form" type="button">Add Experience</button>
+
+    <input class="btn btn-primary" type="submit" name="Update Information">
+</form>
+
+
+    <form id="form-container" method="POST">
+        {% csrf_token %}
+        {{formset.management_form}}
+        {% for form in formset %}
+        <div class="bird-form">
+        {{form.as_p}}
+        </div>
+        {% endfor %}
+        <button id="add-form" type="button">Add Another Bird</button>
+        <input class="btn btn-primary" type="submit" name="Update Information">
+    </form> -->
+
+
+    <form id="form-container" method="POST">
+    {% csrf_token %}
+    {{ formset.management_form }}
+    <div id="form_set">
+        {% for form in formset %}
+            <table class='no_error'>
+                {{ form.as_table }}
+            </table>
+        {% endfor %}
+    </div>
+    <input type="button" value="Add More" id="add-row" class="add-row">
+    <input class="btn btn-primary" type="submit" name="Update Information">
+    <div id="empty_form" style="display:none">
+        <table class='no_error'>
+            {{ formset.empty_form.as_table }}
+        </table>
+    </div>
+    </form>
+
+<!--
+    <script>
+        let birdForm = document.querySelectorAll(".bird-form")
+        let container = document.querySelector("#form-container")
+        let addButton = document.querySelector("#add-form")
+        let totalForms = document.querySelector("#id_form-TOTAL_FORMS")
+
+        let formNum = birdForm.length-1 //Get the number of the last form on the page with zero-based indexing
+        var blankform = formNum
+        addButton.addEventListener('click', addForm)
+
+        function addForm(e){
+            e.preventDefault()
+
+            let newForm = birdForm[blankform].cloneNode(true) //Clone the bird form
+            let formRegex = RegExp(`form-(\\d){1}-`,'g') //Regex to find all instances of the form number
+
+            formNum++ //Increment the form number
+            newForm.innerHTML = newForm.innerHTML.replace(formRegex, `form-${formNum}-`) //Update the new form to have the correct form number
+            container.insertBefore(newForm, addButton) //Insert the new form at the end of the list of forms
+            
+            totalForms.setAttribute('value', `${formNum+1}`) //Increment the number of total forms in the form management
+        }
+    </script>
+-->
+<form id="demo">
+
+  <input name="prefix-INITIAL_FORM_COUNT" value="1" type="hidden">
+  <input name="prefix-TOTAL_FORM_COUNT" value="1" type="hidden">
+  {% csrf_token %}
+  {{ formset.management_form }}
+  <fieldset disabled class="empty-form" style="display: none">
+    <fieldset>
+      {{formset.empty_form.as_p}}
+      <label for="id_prefix-__prefix__-name">Name</label>
+      <input type="text" name="prefix-__prefix__-name" value="initial" id="id_prefix-__prefix__-name">
+      <button type="button" data-formset-remove-form>
+        DELETE
+      </button>
+    </fieldset>
+  </fieldset>
+
+  <fieldset class="forms">
+    {% for form in formset %}
+    <fieldset>
+      {{form.as_p}}
+    </fieldset>
+    {% endfor %}
+  </fieldset>
+
+  <fieldset class="controls">
+    <button type="button" data-formset-add-form>
+      Add new form
+    </button>
+
+  </fieldset>
+
+</form>
+
+
+
+
+
+{% endblock edit_content %}

@@ -92,7 +92,7 @@
             <h4 class="card-title">{{exp.company_name}}</h4>
             <h5>{{exp.job_title}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{exp.start_date}} to {{exp.end_date}}</h6>
-            <p class="card-text">{{exp.job_description}}.</p>
+            <p class="card-text">{{exp.job_description|safe}}.</p>
             <p class="card-text"><small class="text-muted">{{exp.duration}}</small></p>
           </div>
         </div>

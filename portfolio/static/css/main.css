@@ -39,6 +39,11 @@ body {
     padding-bottom: 2rem;
 }
 
+#container-form{
+    padding-left:5rem;
+    padding-right:5rem;
+}
+
 .list-group-item{
     border:none;
 }
@@ -58,4 +63,8 @@ body {
 
 #experience-calendar{
     color: #b3b3b3;
+}
+
+.dotted {
+  border-top: 3px dotted #bbb;
 }

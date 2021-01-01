@@ -1,0 +1,93 @@
+{% extends 'userprofile/main.html' %}
+{% load crispy_forms_tags %}
+{% block edit_content %}
+
+{% for message in messages %}
+    <div class="alert alert-success" role="alert">
+        {{message}}
+    </div>
+{% endfor %}
+    
+    <form id="form-container" method="POST">
+    {% csrf_token %}
+    <h4>About Me</h4>
+    <hr class="solid">
+    <div class="container" id="container-form">
+        {% crispy profile_form profile_form.helper %}
+        <!--{{profile_form|crispy}}-->
+        
+    </div>
+
+    <br>
+
+    <h4 id="education">Education</h4>
+    <hr class="solid">
+    {{ edu_formset.management_form }}
+    <div id="form_set">
+        <div class="container" id="container-form">
+        {% for form in edu_formset %}
+            {{ form|crispy }}
+        <hr class="solid">
+        {% endfor %}
+        </div>
+    </div>
+    <input type="button" class="btn btn-primary btn-lg btn-block" value="Add More" id="add_more">
+
+    <div id="empty_form" style="display:none">
+        <div class="container" id="container-form">
+        {{ edu_formset.empty_form|crispy}}
+        </div>
+    </div>
+
+    <br>
+
+    <h4 id="skill">Skill</h4>
+    <hr class="solid">
+    {{ skill_formset.management_form }}
+    <div id="form_set_skill">
+        <div class="container" id="container-form">
+        {% for form in skill_formset %}
+            {{ form.media }}
+            {{ form|crispy }}
+        <hr class="solid">
+        {% endfor %}
+        </div>
+    </div>
+
+    <input type="button" class="btn btn-primary btn-lg btn-block" value="Add More" id="add_more_skill">
+
+    <div id="empty_form_skill" style="display:none">
+        <div class="container" id="container-form">
+        {{ skill_formset.empty_form|crispy}}
+        </div>
+    </div>
+
+    <br>
+
+    <h4 id="experience">Experience</h4>
+    <hr class="solid">
+    {{ experience_formset.management_form }}  
+    <div id="form_set_experience">
+        <div class="container" id="container-form">
+        {% for form in experience_formset %}
+            {{ form.media }}
+            {{ form|crispy }}
+        <hr class="solid">
+        {% endfor %}
+        </div>
+    </div>
+
+    <input type="button" class="btn btn-primary btn-lg btn-block" value="Add More" id="add_more_exp">
+
+    <div id="empty_form_exp" style="display:none">
+        <div class="container" id="container-form">
+        {{ experience_formset.empty_form|crispy}}
+        </div>
+    </div>
+
+    <br>
+
+    <input class="btn btn-success" type="submit" value="Update Information">
+    </form>
+
+{% endblock edit_content %}
